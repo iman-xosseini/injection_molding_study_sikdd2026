@@ -1,0 +1,36 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+$ENV$
+
+# Environment file
+.env
+.claude
+.vscode
+
+# Ignore folder and files
+tests/
+llm_as_judge
+llm_as_judge_9_evaluation_metrics
+llm_as_judge_lag_1
+llm_explanation/explanation_results_causal_lag_1.md
+llm_explanation/explanation_results_copy.md
+llm_explanation/explanation_results.md
+llm_as_judge.zip
+MyNotes.md
+
+# Ignore all .html files inside subcausal_visualization but do NOT ignore the directlingam folder
+subcausal_visualization/**/*.html
+subcausal_visualization/*.html
+!subcausal_visualization/directlingam/
+!subcausal_visualization/directlingam/**
+
+# Ignore util folder and all files it contains
+util/

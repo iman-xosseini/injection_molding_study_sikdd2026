@@ -1,0 +1,36 @@
+[project]
+name = "sourcecode"
+version = "0.1.0"
+description = "KAMO Injection Molding Analysis"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "catboost>=1.2.10",
+    "fastparquet>=2026.5.0",
+    "ipykernel>=7.2.0",
+    "ipython>=9.13.0",
+    "jinja2>=3.1.6",
+    "json-repair>=0.59.10",
+    "jupyter>=1.1.1",
+    "lightgbm>=4.6.0",
+    "lime>=0.2.0.1",
+    "lingam>=1.12.2",
+    "matplotlib>=3.10.9",
+    "networkx>=3.6.1",
+    "numpy>=2.4.6",
+    "openai>=2.37.0",
+    "openrouter>=0.9.1",
+    "pandas>=3.0.3",
+    "pyarrow>=24.0.0",
+    "python-dotenv>=1.2.2",
+    "pyvis>=0.3.2",
+    "scikit-learn>=1.8.0",
+    "scikit-time>=0.0.0",
+    "shap>=0.51.0",
+    "tabulate>=0.10.0",
+    "torch>=2.12.0",
+    "xgboost>=3.2.0",
+]
+
+# [tool.pyright]
+# reportGeneralTypeIssues = "none"
