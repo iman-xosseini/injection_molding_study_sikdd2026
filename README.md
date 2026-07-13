@@ -338,13 +338,3 @@ A formal citation will be added after publication.
   note    = {Manuscript in preparation}
 }
 ```
-
-## License
-
-Add the repository license here, for example:
-
-```text
-MIT License
-```
-
-or replace this section with the license selected for the project.
