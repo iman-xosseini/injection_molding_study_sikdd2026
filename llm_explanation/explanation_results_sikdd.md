@@ -2,18 +2,18 @@
 
 ## Top 10 SHAP Features for Index Row 2163
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| Clamp_Close_Time                |             1.56197  |
-| Mold_Temperature_4              |             0.633204 |
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |             0.623496 |
-| Average_Screw_RPM               |             0.491415 |
-| Average_Back_Pressure           |             0.429887 |
-| Hopper_Temperature              |             0.408182 |
-| Max_Back_Pressure               |             0.325091 |
-| Max_Injection_Pressure          |             0.306197 |
-| Barrel_Temperature_5            |             0.2555   |
-| Plasticizing_Time               |             0.233488 |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |              2.13913  |               2.13913  | toward Fail |
+| Max_Injection_Pressure          |              0.8178   |               0.8178   | toward Fail |
+| Plasticizing_Time               |             -0.799277 |               0.799277 | toward Pass |
+| Mold_Temperature_4              |             -0.690494 |               0.690494 | toward Pass |
+| Max_Screw_RPM                   |              0.596022 |               0.596022 | toward Fail |
+| Barrel_Temperature_2            |              0.551511 |               0.551511 | toward Fail |
+| Hopper_Temperature              |              0.452056 |               0.452056 | toward Fail |
+| Barrel_Temperature_4            |             -0.425832 |               0.425832 | toward Pass |
+| Barrel_Temperature_6            |              0.397235 |               0.397235 | toward Fail |
+| Average_Back_Pressure           |             -0.378299 |               0.378299 | toward Pass |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -22,7 +22,7 @@
 
 **Reason:** 미성형 => Unshaped
 
-The strongest association was with the time taken for the mold clamp to close, suggesting the clamp closing step may have been an important condition in this failed cycle. The monitored mold temperature, the part type being run, and the average screw rotation speed during material preparation also stood out, pointing to part/setup differences and material-prep or heat-related conditions. Back pressure during material preparation and screw recovery, hopper temperature, and injection pressure were also linked to the failure risk. Plasticizing time and one barrel heating zone temperature added further signs that the material preparation and heating conditions may have played a role.
+The model’s failure-risk assessment was driven most strongly by the product type, which pushed the cycle toward Fail more than any other factor. Higher maximum injection pressure, maximum screw speed, barrel temperature in heating zones 2 and 6, and hopper temperature also increased the model’s expectation of failure. Offsetting that, longer plasticizing time and lower mold temperature in zone 4 reduced the failure-risk assessment, along with lower barrel temperature in zone 4 and lower average back pressure. Overall, the cycle had a mix of conditions leaning both ways, but the Fail-leaning evidence was stronger. These process signals explain the model’s decision for this cycle and do not prove the physical cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -31,7 +31,7 @@ The strongest association was with the time taken for the mold clamp to close, s
 
 **Reason:** 미성형 => Unshaped
 
-The time taken for the mold clamp to close had the most significant influence on this production failure. Fluctuations in mold temperature and the specific part being manufactured also appear to be contributing factors. Additionally, settings related to material preparation, including average screw rotation speed, back pressure, and hopper temperature, may have affected process stability. Variations in injection pressure, barrel temperature, and plasticizing time might be further associated with this outcome. Please review these parameters to ensure they align with current process standards.
+The production of the RG3 MOLD'G W/SHLD, RH part type significantly increased the failure-risk assessment for this cycle. Higher maximum injection pressure and an elevated maximum screw rotation speed also contributed to a higher projected failure risk. Conversely, the plasticizing time and the temperature in the fourth mold zone helped counteract the failure risk assessment. These observations reflect how the model weighed specific cycle data but do not confirm a physical root cause for any quality concerns.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -40,7 +40,7 @@ The time taken for the mold clamp to close had the most significant influence on
 
 **Reason:** 미성형 => Unshaped
 
-This failure may be linked to how long the mold clamp took to close before injection, as this was the most strongly associated factor. The temperature in one of the mold zones and the specific part being produced also showed notable associations with the failure risk. Additionally, the average screw speed and back pressure during material preparation, along with the hopper temperature, may have played supporting roles. Other contributing factors could include the highest back pressure, injection pressure, and the temperature in one of the barrel heating zones. The time taken to prepare the plastic material might have further influenced the outcome.
+The model's failure-risk assessment for this cycle was most strongly influenced by the part type 'RG3 MOLD'G W/SHLD, RH', which increased the risk, followed by high injection pressure and maximum screw RPM, both of which further raised the risk. However, the longer plasticizing time and mold temperature in zone 4 helped reduce the assessed risk. Barrel temperatures in zones 2 and 6, along with hopper temperature, also contributed to increasing the risk, while barrel temperature in zone 4 and average back pressure counteracted it. These conditions collectively shaped the model's assessment, though they do not confirm the physical cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -49,18 +49,18 @@ This failure may be linked to how long the mold clamp took to close before injec
 
 ## Top 10 SHAP Features for Index Row 2177
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| Barrel_Temperature_5            |             1.09033  |
-| Barrel_Temperature_3            |             0.954515 |
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |             0.757566 |
-| Average_Screw_RPM               |             0.724447 |
-| Plasticizing_Time               |             0.720355 |
-| Mold_Temperature_3              |             0.49428  |
-| Clamp_Close_Time                |             0.328497 |
-| Hopper_Temperature              |             0.259448 |
-| Average_Back_Pressure           |             0.25866  |
-| Barrel_Temperature_1            |             0.242705 |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |              2.24777  |               2.24777  | toward Fail |
+| Barrel_Temperature_5            |              1.35305  |               1.35305  | toward Fail |
+| Max_Screw_RPM                   |              0.511997 |               0.511997 | toward Fail |
+| Average_Back_Pressure           |             -0.499829 |               0.499829 | toward Pass |
+| Barrel_Temperature_1            |             -0.396617 |               0.396617 | toward Pass |
+| Clamp_Close_Time                |             -0.366042 |               0.366042 | toward Pass |
+| Max_Injection_Pressure          |              0.296481 |               0.296481 | toward Fail |
+| Hopper_Temperature              |              0.282539 |               0.282539 | toward Fail |
+| Mold_Temperature_4              |             -0.270166 |               0.270166 | toward Pass |
+| Barrel_Temperature_3            |              0.25345  |               0.25345  | toward Fail |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -69,7 +69,7 @@ This failure may be linked to how long the mold clamp took to close before injec
 
 **Reason:** 미성형 => Unshaped
 
-This cycle may have failed because the barrel heating in the third and fifth zones was a major factor, which can affect how the plastic melted and flowed. The part type being made also appears to have been linked to higher risk for this run, along with the screw’s average rotation speed and the time needed to plasticize the material. Mold temperature, clamp closing time, hopper temperature, back pressure, and the first barrel heating zone also look like possible contributors.
+The model’s failure-risk assessment was pushed most strongly toward Fail by the product type for this cycle, along with higher temperature in barrel zone 5 and a higher maximum screw speed during plasticizing. Additional Fail-leaning influence came from the maximum injection pressure, hopper temperature, and barrel zone 3 temperature. Offsetting that, the average back pressure, barrel zone 1 temperature, clamp close time, and a monitored mold temperature all pushed the assessment toward Pass and reduced the overall failure risk. These factors describe how the model weighed the cycle, but they do not prove any physical root cause or show that any setting was outside an acceptable process range.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -78,7 +78,7 @@ This cycle may have failed because the barrel heating in the third and fifth zon
 
 **Reason:** 미성형 => Unshaped
 
-The recent production failure may be linked to thermal variations in the fifth and third heating zones of the injection barrel. The specific product part being manufactured and settings related to material preparation, including the average screw rotation speed and total plasticizing time, were also significant contributors. Changes in the temperature of the third mold zone may have further influenced this result. Additionally, variations in clamp closing time, hopper temperature, average back pressure, and the first barrel heating zone should be reviewed as potential factors in this incident.
+The model's assessment of failure risk for this production cycle was primarily increased by the specific part type being manufactured, the temperature in the fifth zone of the injection barrel, and the maximum screw rotation speed. Higher injection pressure and elevated hopper temperatures also contributed to this increased risk assessment. Conversely, the average back pressure during material preparation, the temperature in the first heating zone of the barrel, and the clamp closing time acted to reduce the model's failure-risk assessment. These factors reflect the model’s internal evaluation and do not confirm the physical root cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -87,7 +87,7 @@ The recent production failure may be linked to thermal variations in the fifth a
 
 **Reason:** 미성형 => Unshaped
 
-This failure may be linked to temperature inconsistencies in the barrel's heating zones, particularly the fifth and third zones, which could affect material melting and flow. The specific part being produced (PART_NAME_RG3 MOLD'G W/SHLD, LH) and the average screw speed during plasticizing also appear closely associated with the issue. Longer plasticizing times might indicate material preparation challenges, while mold temperature in one zone could contribute to cooling or forming problems. Variations in clamp closing time or hopper temperature may further influence process stability. These conditions together suggest potential instability in material processing or mold interaction.
+The model's failure-risk assessment for this cycle was most strongly influenced by the part type 'RG3 MOLD'G W/SHLD, RH', which increased the risk, followed by the high temperature in the fifth barrel heating zone. The maximum screw RPM also contributed to higher risk, while the average back pressure and first barrel temperature helped reduce it. Other factors like injection pressure and hopper temperature slightly raised the risk, but clamp close time and mold temperature in zone 4 counteracted some of that risk. The combination of these conditions shaped the model's overall assessment without confirming a physical defect cause.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -96,18 +96,18 @@ This failure may be linked to temperature inconsistencies in the barrel's heatin
 
 ## Top 10 SHAP Features for Index Row 4726
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| Average_Screw_RPM               |             0.8981   |
-| Barrel_Temperature_3            |             0.42395  |
-| Plasticizing_Time               |             0.417788 |
-| Hopper_Temperature              |             0.236374 |
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |             0.2245   |
-| PART_NAME_CN7 W/S SIDE MLD'G LH |             0.209418 |
-| Max_Injection_Pressure          |             0.194514 |
-| Max_Injection_Speed             |             0.183316 |
-| Barrel_Temperature_4            |             0.178109 |
-| Barrel_Temperature_5            |             0.159217 |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| Average_Screw_RPM               |             -0.736716 |               0.736716 | toward Pass |
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |             -0.622412 |               0.622412 | toward Pass |
+| Clamp_Close_Time                |             -0.612787 |               0.612787 | toward Pass |
+| Hopper_Temperature              |              0.538462 |               0.538462 | toward Fail |
+| Max_Injection_Pressure          |             -0.463647 |               0.463647 | toward Pass |
+| Mold_Temperature_3              |             -0.39628  |               0.39628  | toward Pass |
+| Mold_Temperature_4              |             -0.363806 |               0.363806 | toward Pass |
+| Max_Screw_RPM                   |             -0.339795 |               0.339795 | toward Pass |
+| Injection_Time                  |              0.272046 |               0.272046 | toward Fail |
+| Barrel_Temperature_1            |              0.240349 |               0.240349 | toward Fail |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -116,7 +116,7 @@ This failure may be linked to temperature inconsistencies in the barrel's heatin
 
 **Reason:** 미성형 => Unshaped
 
-This failure looks most associated with the screw rotation speed during material preparation, the temperature in the third barrel heating zone, and the time used to melt and prepare the plastic before injection. Hopper area temperature and the part type being run may also have played a role in the cycle conditions. Injection pressure and injection speed, along with temperatures in the fourth and fifth barrel zones, were additional possible contributors. Overall, the cycle may have been sensitive to material preparation and barrel heating conditions.
+The model saw several conditions as lowering the failure-risk assessment, especially the average screw rotation speed, the part type for this cycle, and the mold clamp closing time, with additional support from the maximum injection pressure and mold temperatures. The main conditions pushing the other way were the hopper temperature, which increased the failure-risk assessment, along with longer injection time and the first barrel heating zone temperature. Overall, the pass-leaning evidence was stronger than the fail-leaning evidence, so the cycle was assessed as more consistent with Pass than Fail. This describes how the process signals affected the model’s judgment, not the physical root cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -125,7 +125,7 @@ This failure looks most associated with the screw rotation speed during material
 
 **Reason:** 미성형 => Unshaped
 
-The recent production failure is primarily associated with variations in the average screw rotation speed during material preparation. The temperature in the third heating zone of the barrel and the time required to melt and prepare the plastic also appear to be contributing factors. Additionally, fluctuations in hopper temperature, injection pressure, and injection speed may have influenced the outcome of this cycle. Reviewing these process conditions may help confirm their impact on current production consistency.
+The temperature around the material hopper increased the model's assessment of failure risk for this production cycle. Conversely, the specific screw rotation speed, the product part identity, and the mold clamp closing time acted as the strongest factors pushing the assessment toward a successful outcome. Additionally, the maximum injection pressure helped counteract the failure-risk assessment. These influences describe the model's interpretation of the data and do not confirm the physical cause of any production outcome.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -134,7 +134,7 @@ The recent production failure is primarily associated with variations in the ave
 
 **Reason:** 미성형 => Unshaped
 
-This failure may be linked to variations in material preparation, particularly the average screw speed and plasticizing time, which can affect material consistency. The temperature in the third heating zone of the barrel was also a notable factor, suggesting uneven melting or material flow. The hopper temperature and specific part types being produced may have contributed to the issue, possibly due to material handling or part-specific sensitivities. Injection pressure and speed were additional factors, indicating potential instability during mold filling. Barrel temperatures in zones four and five were also involved, reinforcing the role of thermal conditions in this cycle.
+The model's failure-risk assessment was most strongly reduced by the average screw rotation speed during material preparation, the specific part being manufactured ('RG3 MOLD'G W/SHLD, RH'), and the clamp close time, all of which pushed the assessment toward Pass. However, the hopper temperature increased the failure-risk assessment more than any other single factor. The injection time and the temperature in the first heating zone of the barrel also contributed to increasing the failure-risk assessment, though to a lesser extent. Overall, the conditions pushing toward Pass outweighed those increasing failure risk, shaping the model's final assessment for this cycle.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -143,18 +143,18 @@ This failure may be linked to variations in material preparation, particularly t
 
 ## Top 10 SHAP Features for Index Row 5183
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| Average_Screw_RPM               |             3.33814  |
-| Max_Back_Pressure               |             1.91072  |
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |             0.702418 |
-| Clamp_Close_Time                |             0.614865 |
-| Barrel_Temperature_3            |             0.491025 |
-| Plasticizing_Time               |             0.453288 |
-| PART_NAME_CN7 W/S SIDE MLD'G LH |             0.387758 |
-| Average_Back_Pressure           |             0.387138 |
-| Hopper_Temperature              |             0.336166 |
-| Barrel_Temperature_4            |             0.304961 |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |              2.18961  |               2.18961  | toward Fail |
+| Max_Back_Pressure               |              1.35706  |               1.35706  | toward Fail |
+| Average_Back_Pressure           |              1.01159  |               1.01159  | toward Fail |
+| Max_Injection_Pressure          |              0.685946 |               0.685946 | toward Fail |
+| Hopper_Temperature              |              0.494269 |               0.494269 | toward Fail |
+| Barrel_Temperature_6            |              0.487087 |               0.487087 | toward Fail |
+| Max_Screw_RPM                   |              0.477147 |               0.477147 | toward Fail |
+| Plasticizing_Time               |              0.46788  |               0.46788  | toward Fail |
+| Cycle_Time                      |              0.392393 |               0.392393 | toward Fail |
+| Clamp_Close_Time                |             -0.279484 |               0.279484 | toward Pass |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -163,7 +163,7 @@ This failure may be linked to variations in material preparation, particularly t
 
 **Reason:** 가스 => Gas
 
-The cycle looks most associated with material preparation conditions, especially the average screw rotation speed during material preparation and the highest resistance pressure during screw recovery and plasticizing. The mold closing time and the temperatures in the barrel heating zones may also have contributed, since these can affect how the material is prepared and injected. Plasticizing time and average back pressure are additional signs that the material-handling stage may have been a factor. The part type itself also appears linked to this failure risk, which may mean this product is more sensitive to process variation. Hopper temperature and another barrel zone temperature may have added to the risk as well.
+The model leaned toward Fail mainly because the part being run, RG3 MOLD'G W/SHLD, RH, was associated with a higher failure-risk assessment for this cycle. Higher back pressure, both the maximum and the average during plasticizing, also pushed the assessment toward Fail, with additional support from higher maximum injection pressure. Hopper temperature, barrel temperature in zone 6, screw speed, plasticizing time, and overall cycle time each added smaller amounts of failure-risk. The main offsetting evidence was clamp close time, which pushed the assessment toward Pass and partially reduced the overall failure-risk view.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -172,7 +172,7 @@ The cycle looks most associated with material preparation conditions, especially
 
 **Reason:** 가스 => Gas
 
-This production cycle shows variations in material preparation, specifically regarding average screw rotation speed and back pressure, that may have contributed to the failure. The specific part configuration and the timing of the mold clamp closing also appear to be associated with this result. Additionally, inconsistencies in the third and fourth barrel heating zones, along with the time taken to prepare the plastic, are possible factors. Finally, fluctuations in the hopper temperature may have also influenced the outcome of this cycle.
+The model’s assessment of increased failure risk for this production cycle was primarily driven by the specific part type, RG3 MOLD'G W/SHLD, RH. Additionally, high readings for maximum and average back pressure, maximum injection pressure, and hopper temperature further increased the risk profile during this run. While these factors contributed to the failure-risk assessment, the clamp close time served to counteract this trend and reduced the overall assessment. These observations reflect how the model processed these variables and do not confirm that these conditions physically caused a defect.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -181,7 +181,7 @@ This production cycle shows variations in material preparation, specifically reg
 
 **Reason:** 가스 => Gas
 
-This failure may be linked to variations in material preparation, particularly the average screw speed and peak back pressure during plasticizing. The specific part being produced (RG3 MOLD'G W/SHLD, LH) and clamp closing time also showed stronger associations with the issue. Additionally, barrel temperatures in zones 3 and 4, plasticizing time, and hopper temperature may have played supporting roles in the process conditions leading to the failure. The part type CN7 W/S SIDE MLD'G LH and average back pressure were less influential but still notable. Check these areas for inconsistencies that could affect material flow or stability.
+The model's failure-risk assessment for this cycle was most strongly influenced by the part type 'RG3 MOLD'G W/SHLD, RH', which increased the risk of failure. High back pressure, both maximum and average, further elevated the failure-risk assessment, along with elevated maximum injection pressure and hopper temperature. The sixth barrel temperature zone, maximum screw RPM, plasticizing time, and cycle time also contributed to increasing the model's failure-risk assessment. However, a faster clamp close time helped reduce the model's failure-risk assessment for this cycle. These conditions collectively shaped the model's evaluation, though they do not confirm the physical cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -190,18 +190,18 @@ This failure may be linked to variations in material preparation, particularly t
 
 ## Top 10 SHAP Features for Index Row 5185
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| Average_Screw_RPM               |             3.22632  |
-| Max_Back_Pressure               |             1.99207  |
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |             0.677658 |
-| Barrel_Temperature_3            |             0.593727 |
-| Average_Back_Pressure           |             0.571508 |
-| Clamp_Close_Time                |             0.543364 |
-| Plasticizing_Time               |             0.498845 |
-| Max_Injection_Pressure          |             0.446098 |
-| Barrel_Temperature_5            |             0.397349 |
-| PART_NAME_CN7 W/S SIDE MLD'G LH |             0.318748 |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |              2.14701  |               2.14701  | toward Fail |
+| Max_Back_Pressure               |              1.30035  |               1.30035  | toward Fail |
+| Max_Injection_Pressure          |              1.08043  |               1.08043  | toward Fail |
+| Average_Back_Pressure           |              0.918646 |               0.918646 | toward Fail |
+| Clamp_Close_Time                |             -0.617266 |               0.617266 | toward Pass |
+| Barrel_Temperature_2            |              0.497433 |               0.497433 | toward Fail |
+| Mold_Temperature_4              |             -0.438651 |               0.438651 | toward Pass |
+| Hopper_Temperature              |              0.417874 |               0.417874 | toward Fail |
+| Barrel_Temperature_4            |             -0.409705 |               0.409705 | toward Pass |
+| Cycle_Time                      |              0.382443 |               0.382443 | toward Fail |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -210,7 +210,7 @@ This failure may be linked to variations in material preparation, particularly t
 
 **Reason:** 가스 => Gas
 
-This cycle may have been more likely to fail because the screw rotation speed during material preparation was a major factor, along with the highest resistance pressure during screw recovery and plasticizing. The product type being run also appears to matter, which suggests this part may be more sensitive to process conditions. Temperature in the barrel heating zones, clamp closing time, plasticizing time, and injection pressure also seem to have contributed to the risk. Another part type in the history of this cycle was also associated with the failure, so the issue may be tied to a mix of part-specific and process-condition effects.
+The model’s failure-risk assessment was driven mainly by the part type for this cycle, which strongly pushed the decision toward Fail. Higher maximum back pressure, higher maximum injection pressure, and higher average back pressure also increased the model’s concern about failure, indicating the pressure profile was an important contributor to the risk assessment. In addition, barrel zone 2 temperature, hopper temperature, and cycle time each added smaller amounts of Fail-leaning evidence. Counteracting this, the clamp close time reduced the failure-risk assessment, and mold temperature zone 4 and barrel temperature zone 4 also pushed the model toward Pass.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -219,7 +219,7 @@ This cycle may have been more likely to fail because the screw rotation speed du
 
 **Reason:** 가스 => Gas
 
-The production process for this cycle shows that the average screw rotation speed and back pressure during material preparation were significant factors and may have contributed to the failure. Additionally, the specific part being produced, along with temperature settings in the injection barrel, likely played a role in the outcome. Other process timings and pressures during the clamp and injection phases could also have been contributing factors. We recommend reviewing these preparation and molding settings to ensure they are consistent with their established quality standards.
+The model’s assessment of higher failure risk for this production cycle was primarily influenced by the specific part type, RG3 MOLD'G W/SHLD, RH. Additionally, elevated readings for maximum back pressure, maximum injection pressure, and average back pressure further increased the failure-risk assessment. Conversely, the time taken for the mold clamp to close acted to counteract these factors and reduced the model's failure-risk assessment. Please note that this analysis reflects internal model logic and does not identify the definitive physical cause of the defect or indicate that any individual measurement fell outside of operational specifications.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -228,7 +228,7 @@ The production process for this cycle shows that the average screw rotation spee
 
 **Reason:** 가스 => Gas
 
-This failure may be linked to variations in material preparation, particularly the average screw speed and high back pressure during plasticizing, which can affect material consistency. The part type "RG3 MOLD'G W/SHLD, LH" and specific barrel temperatures in zones 3 and 5 might also play a role, as they influence how the material melts and flows. Additionally, the time taken to close the mold clamp and the plasticizing time could contribute to instability in the process. High injection pressure may further indicate potential issues with material flow or mold filling. These factors together suggest conditions that could increase the risk of defects in this cycle.
+The model's failure-risk assessment for this cycle was most strongly influenced by the part type 'RG3 MOLD'G W/SHLD, RH', which increased the risk. High back pressure, high injection pressure, and above-average back pressure during material preparation further elevated the risk. However, a faster clamp close time and lower temperatures in mold zone 4 and barrel zone 4 reduced the assessed risk. While these conditions shaped the model's output, they do not confirm the physical cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -237,18 +237,18 @@ This failure may be linked to variations in material preparation, particularly t
 
 ## Top 10 SHAP Features for Index Row 5188
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |             2.35756  |
-| Max_Back_Pressure               |             1.28945  |
-| Average_Screw_RPM               |             1.16402  |
-| Plasticizing_Time               |             0.384992 |
-| Clamp_Close_Time                |             0.308258 |
-| Barrel_Temperature_5            |             0.231653 |
-| Barrel_Temperature_3            |             0.217354 |
-| Max_Injection_Pressure          |             0.206666 |
-| Barrel_Temperature_4            |             0.194226 |
-| Injection_Time                  |             0.16301  |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| Average_Back_Pressure           |              1.50851  |               1.50851  | toward Fail |
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |             -1.23971  |               1.23971  | toward Pass |
+| Max_Injection_Pressure          |              1.19555  |               1.19555  | toward Fail |
+| Max_Back_Pressure               |              1.16629  |               1.16629  | toward Fail |
+| Hopper_Temperature              |              0.590555 |               0.590555 | toward Fail |
+| Mold_Temperature_4              |             -0.533641 |               0.533641 | toward Pass |
+| Plasticizing_Time               |              0.454321 |               0.454321 | toward Fail |
+| Average_Screw_RPM               |             -0.441036 |               0.441036 | toward Pass |
+| Clamp_Close_Time                |             -0.397    |               0.397    | toward Pass |
+| Max_Screw_RPM                   |              0.389777 |               0.389777 | toward Fail |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -257,10 +257,7 @@ This failure may be linked to variations in material preparation, particularly t
 
 **Reason:** 미성형 => Unshaped
 
-This failure may be associated with the RG3 MOLD'G W/SHLD, LH part run, which suggests this product type had a higher risk in this cycle.  
-The strongest process signals were in screw recovery and material prep, especially the highest resistance pressure during plasticizing and the average screw rotation speed, which may point to less stable melt preparation.  
-Plasticizing time and clamp close time also stood out, along with barrel temperatures in zones 3 to 5, suggesting the melt and mold conditions may not have been fully consistent.  
-Injection pressure and injection time also contributed, so the fill and packing sequence may have been part of the issue.
+The model’s failure-risk assessment was driven mainly by higher average back pressure, higher maximum injection pressure, and higher maximum back pressure, all of which pushed the cycle toward Fail. Higher hopper temperature, longer plasticizing time, and a higher maximum screw speed also added to the failure-risk view. Offsetting that, the part type for this cycle and the mold temperature in one monitored zone pushed the assessment toward Pass. Lower average screw speed and a shorter clamp-close time also reduced the model’s concern about failure. Overall, the cycle had several strong pressure-related signals increasing failure risk, balanced by a smaller set of factors pointing toward Pass.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -269,7 +266,7 @@ Injection pressure and injection time also contributed, so the fill and packing 
 
 **Reason:** 미성형 => Unshaped
 
-The production of the RG3 molding with shield, LH, was identified as a cycle with potential concerns. Variations in the back pressure and average screw rotation speed during material preparation were significant factors associated with this result. Additionally, inconsistencies in the time taken for plasticizing and clamping, as well as shifts in specific barrel zone temperatures and injection pressure, may have contributed to the process instability. Reviewing these mechanical and thermal settings may help clarify the conditions surrounding this production cycle.
+The average resistance pressure during material preparation, the maximum injection pressure, and the maximum resistance pressure during screw recovery were the primary factors increasing the failure-risk assessment for this cycle. Additionally, the hopper temperature contributed to this increased risk. Conversely, the specific part type being manufactured counteracted these factors by pushing the assessment toward a pass. Other mitigating influences included the temperature in the monitored mold zone and the average screw rotation speed.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -278,7 +275,7 @@ The production of the RG3 molding with shield, LH, was identified as a cycle wit
 
 **Reason:** 미성형 => Unshaped
 
-This failure may be linked to the specific part being produced (PART_NAME_RG3 MOLD'G W/SHLD, LH), as it was the most strongly associated factor. The highest resistance pressure during material preparation (Max_Back_Pressure) and the average screw speed (Average_Screw_RPM) also played a notable role, suggesting potential issues with material processing. The time taken to melt and prepare the plastic (Plasticizing_Time) and the mold clamp closing time (Clamp_Close_Time) were additional contributing factors. Temperatures in the barrel's heating zones (especially zones 3, 4, and 5) and the maximum injection pressure may have further influenced the outcome. These conditions together could indicate variability in material handling or process stability during this cycle.
+The model's failure-risk assessment for this cycle was most strongly influenced by higher-than-typical average back pressure, maximum injection pressure, and maximum back pressure, all of which increased the perceived risk. The specific part being produced ('RG3 MOLD'G W/SHLD, RH') notably reduced the risk assessment, as did stable mold temperature in one zone and consistent clamp closure timing. While hopper temperature, plasticizing time, and maximum screw RPM also contributed to the risk assessment, their impact was less significant. The combination of these factors shaped the model's output, though they do not confirm the physical cause of any defect. Process conditions appeared generally controlled, with no single measurement standing out as extreme.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -287,18 +284,18 @@ This failure may be linked to the specific part being produced (PART_NAME_RG3 MO
 
 ## Top 10 SHAP Features for Index Row 5190
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |             2.32965  |
-| Max_Back_Pressure               |             1.2724   |
-| Average_Screw_RPM               |             1.20342  |
-| Barrel_Temperature_4            |             0.489393 |
-| Plasticizing_Time               |             0.341227 |
-| Clamp_Close_Time                |             0.296555 |
-| Barrel_Temperature_3            |             0.202296 |
-| Injection_Time                  |             0.161457 |
-| Max_Injection_Pressure          |             0.156108 |
-| Barrel_Temperature_5            |             0.148473 |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |             -1.71132  |               1.71132  | toward Pass |
+| Average_Back_Pressure           |              1.4507   |               1.4507   | toward Fail |
+| Max_Back_Pressure               |              1.15538  |               1.15538  | toward Fail |
+| Max_Injection_Pressure          |              0.748531 |               0.748531 | toward Fail |
+| Hopper_Temperature              |              0.529087 |               0.529087 | toward Fail |
+| Plasticizing_Time               |              0.474033 |               0.474033 | toward Fail |
+| Clamp_Close_Time                |             -0.453913 |               0.453913 | toward Pass |
+| Mold_Temperature_4              |             -0.451478 |               0.451478 | toward Pass |
+| Barrel_Temperature_2            |              0.439037 |               0.439037 | toward Fail |
+| Max_Screw_RPM                   |              0.381787 |               0.381787 | toward Fail |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -307,10 +304,7 @@ This failure may be linked to the specific part being produced (PART_NAME_RG3 MO
 
 **Reason:** 미성형 => Unshaped
 
-This failure may be linked first to the specific part being made, which can have tighter process sensitivity than other parts.  
-The strongest process factors were the highest resistance pressure during screw recovery and plasticizing, along with the average screw rotation speed during material preparation, which suggests the material prep stage may have been a key contributor.  
-Heating conditions in the barrel, especially in the third, fourth, and fifth zones, also appear to have played a role, along with plasticizing time and clamp close time.  
-Injection time and the highest injection pressure were also associated with this cycle’s failure risk, so the issue may be tied to how the material was prepared and injected on this part.
+The model’s assessment was pulled most toward Pass by the product part type for this cycle, which strongly reduced the failure-risk estimate. Against that, higher average back pressure and higher peak back pressure were the strongest process signals pushing the assessment toward Fail, indicating a higher perceived risk during material preparation. Higher peak injection pressure and hopper temperature also increased the failure-risk assessment, with plasticizing time, barrel temperature in zone 2, and maximum screw speed adding smaller Fail-leaning influence. Some conditions counteracted that risk: clamp close time and one monitored mold temperature pushed the assessment toward Pass.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -319,7 +313,7 @@ Injection time and the highest injection pressure were also associated with this
 
 **Reason:** 미성형 => Unshaped
 
-The specific production run of the RG3 MOLD'G W/SHLD, LH part is the primary factor associated with this failure. Variations in the material preparation process, particularly the maximum resistance pressure during screw recovery and the average screw rotation speed, may have contributed to this result. Additionally, the temperature settings across the middle barrel zones, along with the duration of the plasticizing process, are potential factors in this cycle's performance. Minor variations in clamp closing time, injection timing, and injection pressure are also linked to this failure. Please review these settings to ensure they remain within established process standards.
+The model's assessment for this production cycle was influenced most strongly by the specific part type being manufactured, which acted to reduce the failure-risk assessment. Conversely, higher readings for average and maximum back pressure, maximum injection pressure, hopper temperature, and plasticizing time all worked to increase the failure-risk assessment. Other conditions, such as the clamp closing time and mold temperature readings, provided additional counteracting influence that reduced the risk assessment. These observations reflect the influence of monitoring data on the current model output and do not represent a definitive finding of a physical defect or root cause for the cycle.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -328,7 +322,7 @@ The specific production run of the RG3 MOLD'G W/SHLD, LH part is the primary fac
 
 **Reason:** 미성형 => Unshaped
 
-This failure may be linked to the specific part being produced (PART_NAME_RG3 MOLD'G W/SHLD, LH), as it was the most strongly associated factor. The highest resistance pressure during screw recovery (Max_Back_Pressure) and the average screw rotation speed (Average_Screw_RPM) during material preparation were also key contributors, suggesting potential issues with material processing. The temperature in the fourth heating zone of the injection barrel (Barrel_Temperature_4) and the time taken to melt and prepare the plastic (Plasticizing_Time) may have played a role as well. Additionally, the time taken for the mold clamp to close (Clamp_Close_Time) and the temperature in the third heating zone (Barrel_Temperature_3) could have been influencing factors.
+The model's failure-risk assessment for this cycle was most strongly reduced by the part type being 'RG3 MOLD'G W/SHLD, RH', which pushed the outcome toward Pass. However, this was countered by higher-than-typical average and maximum back pressure, as well as elevated maximum injection pressure, all of which increased the assessed risk of failure. Additional factors like hopper temperature and plasticizing time further contributed to the failure-risk assessment, though to a lesser extent. On the other hand, a faster clamp close time and mold temperature in one zone helped reduce the perceived risk. The combination of these conditions shaped the model's overall risk evaluation for this cycle.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -337,18 +331,18 @@ This failure may be linked to the specific part being produced (PART_NAME_RG3 MO
 
 ## Top 10 SHAP Features for Index Row 5192
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |             2.48769  |
-| Max_Back_Pressure               |             1.21786  |
-| Average_Screw_RPM               |             1.17579  |
-| Clamp_Close_Time                |             0.349701 |
-| Barrel_Temperature_5            |             0.328133 |
-| Barrel_Temperature_3            |             0.304889 |
-| Plasticizing_Time               |             0.270693 |
-| Max_Injection_Pressure          |             0.242305 |
-| Barrel_Temperature_4            |             0.220438 |
-| Injection_Time                  |             0.161786 |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |             -1.67014  |               1.67014  | toward Pass |
+| Average_Back_Pressure           |              1.49367  |               1.49367  | toward Fail |
+| Max_Back_Pressure               |              1.10799  |               1.10799  | toward Fail |
+| Max_Injection_Pressure          |              0.863074 |               0.863074 | toward Fail |
+| Hopper_Temperature              |              0.51082  |               0.51082  | toward Fail |
+| Mold_Temperature_4              |             -0.499888 |               0.499888 | toward Pass |
+| Plasticizing_Time               |              0.47387  |               0.47387  | toward Fail |
+| Barrel_Temperature_6            |              0.445111 |               0.445111 | toward Fail |
+| Average_Screw_RPM               |             -0.36964  |               0.36964  | toward Pass |
+| Max_Screw_RPM                   |              0.339193 |               0.339193 | toward Fail |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -357,7 +351,7 @@ This failure may be linked to the specific part being produced (PART_NAME_RG3 MO
 
 **Reason:** 가스 => Gas
 
-This failure is most associated with the part type being run, which may have different process needs or sensitivity than other parts. The strongest process factors linked to the failure were the highest back pressure during plasticizing and the average screw speed, suggesting the material preparation step may have been less stable for this cycle. Clamp closing time, barrel temperatures in several zones, and plasticizing time also stand out as possible contributors, along with injection pressure and injection time. Together, these points suggest the cycle may have had an issue in material preparation and mold filling conditions.
+The model’s failure-risk assessment was pushed up most by higher average back pressure, higher maximum back pressure, and higher maximum injection pressure, with additional upward pressure from hopper temperature, plasticizing time, barrel temperature zone 6, and maximum screw speed. These conditions made the cycle look more likely to fail than pass in the model’s view. Offsetting that, the part type for “RG3 MOLD'G W/SHLD, RH” and the mold temperature at zone 4 both pulled the assessment toward Pass. The average screw speed also reduced the failure-risk assessment. This indicates which process conditions most influenced the model’s decision for this cycle, not the physical root cause of the defect.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -366,7 +360,7 @@ This failure is most associated with the part type being run, which may have dif
 
 **Reason:** 가스 => Gas
 
-The production of the RG3 MOLD'G W/SHLD, LH part is the primary factor associated with this cycle's result. Variations in the back pressure applied during screw recovery and the average screw rotation speed were also significant contributors to the process outcome. Fluctuations in the mold clamp closing time, barrel heating zone temperatures, and material preparation timing may have further impacted the process stability. Finally, consider reviewing the injection pressure and injection timing for any potential irregularities.
+The production cycle for the RG3 MOLD'G W/SHLD, RH part type had the strongest influence in reducing the failure-risk assessment. Conversely, several pressure-related variables increased the failure-risk assessment, specifically the average and maximum back pressure levels during material preparation, as well as the maximum injection pressure. Elevated hopper temperatures further contributed to the risk assessment. The temperature recorded in the fourth mold zone helped counteract these factors, working to reduce the overall failure-risk assessment for this cycle.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -375,7 +369,7 @@ The production of the RG3 MOLD'G W/SHLD, LH part is the primary factor associate
 
 **Reason:** 가스 => Gas
 
-This failure may be linked to the specific part being produced (PART_NAME_RG3 MOLD'G W/SHLD, LH), as it was the most strongly associated factor. The highest resistance pressure during screw recovery and plasticizing, along with the average screw rotation speed, also played a notable role. Additionally, variations in mold clamp closing time, barrel temperatures in zones 3, 4, and 5, and plasticizing time may have contributed. The highest injection pressure and injection time were less influential but could still be related to the issue. These conditions together suggest a combination of material preparation, pressure control, and part-specific factors that may have increased failure risk.
+The model's failure-risk assessment for this cycle was most strongly reduced by the part type being 'RG3 MOLD'G W/SHLD, RH', which pushed the outcome toward Pass. However, this was countered by elevated average and maximum back pressure, along with high injection pressure, all of which increased the assessed risk of failure. Additional factors like hopper temperature and plasticizing time further contributed to the failure-risk assessment, while mold temperature in zone 4 and average screw RPM helped reduce it. The combination of these conditions shaped the model's overall risk evaluation, though they do not confirm the physical cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -384,18 +378,18 @@ This failure may be linked to the specific part being produced (PART_NAME_RG3 MO
 
 ## Top 10 SHAP Features for Index Row 5205
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |             2.37951  |
-| Max_Back_Pressure               |             1.20328  |
-| Average_Screw_RPM               |             1.18679  |
-| Clamp_Close_Time                |             0.360926 |
-| Plasticizing_Time               |             0.26996  |
-| Hopper_Temperature              |             0.20775  |
-| Barrel_Temperature_3            |             0.200379 |
-| Barrel_Temperature_5            |             0.192911 |
-| Max_Injection_Pressure          |             0.187038 |
-| Injection_Time                  |             0.163035 |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |             -1.86773  |               1.86773  | toward Pass |
+| Max_Back_Pressure               |              1.1584   |               1.1584   | toward Fail |
+| Average_Back_Pressure           |              1.06604  |               1.06604  | toward Fail |
+| Max_Injection_Pressure          |              0.839625 |               0.839625 | toward Fail |
+| Barrel_Temperature_5            |              0.786269 |               0.786269 | toward Fail |
+| Barrel_Temperature_6            |              0.606709 |               0.606709 | toward Fail |
+| Plasticizing_Time               |              0.56926  |               0.56926  | toward Fail |
+| Mold_Temperature_4              |             -0.467079 |               0.467079 | toward Pass |
+| Hopper_Temperature              |              0.356431 |               0.356431 | toward Fail |
+| Barrel_Temperature_4            |             -0.341338 |               0.341338 | toward Pass |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -404,7 +398,7 @@ This failure may be linked to the specific part being produced (PART_NAME_RG3 MO
 
 **Reason:** 가스 => Gas
 
-This failure may be linked to the specific part being run, since this part type has shown an association with higher risk in similar cycles. Material preparation conditions also stood out, especially the highest back pressure and average screw speed, which can affect how the plastic is melted and fed. Clamp closing time and plasticizing time may also have contributed, along with hopper and barrel heating conditions that influence melt quality. Injection pressure and injection time were also part of the pattern, suggesting the fill process for this cycle may have been less stable than usual.
+The model’s assessment was pushed toward Pass most strongly by the product part being run, which weighed against a failure call for this cycle. The strongest process signals pushing toward Fail were higher maximum and average back pressure, along with higher maximum injection pressure, all of which increased the model’s failure-risk assessment. Higher barrel temperature in zones 5 and 6 also contributed toward Fail, and plasticizing time plus hopper temperature added smaller additional pressure in that direction. Offsetting some of that, mold temperature in one monitored zone and barrel temperature in zone 4 pushed the assessment back toward Pass.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -413,7 +407,7 @@ This failure may be linked to the specific part being run, since this part type 
 
 **Reason:** 가스 => Gas
 
-This failure may be related to the specific production run of the RG3 MOLD'G W/SHLD, LH part. Key process conditions, such as the highest resistance pressure applied during screw recovery and the average screw rotation speed, appear to be significant contributors to this outcome. Variations in the mold clamp closing time and the time taken to prepare the plastic material also seem to be associated with the failure. Additionally, fluctuations in hopper and barrel temperatures, as well as the injection pressure and time during this cycle, may have played a role.
+The model's assessment for this cycle was strongly influenced toward a Pass classification by the specific part type being manufactured. Conversely, higher values in maximum and average back pressure, maximum injection pressure, and the temperature of the fifth heating zone all acted to increase the assessed failure risk. While the fourth mold temperature zone provided evidence that countered this risk assessment, the collective pressure and heat variables were the primary drivers pushing the model toward a potential Fail outcome. Please note that these observations reflect the model’s internal assessment patterns and do not confirm these variables as the physical root cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -422,7 +416,7 @@ This failure may be related to the specific production run of the RG3 MOLD'G W/S
 
 **Reason:** 가스 => Gas
 
-This failure may be linked to the specific part being produced (PART_NAME_RG3 MOLD'G W/SHLD, LH), as it was the most strongly associated factor. The highest resistance pressure during screw recovery and plasticizing, along with the average screw rotation speed, also played a notable role. Additionally, the time taken for the mold clamp to close and the plasticizing time could have contributed to the issue. Hopper temperature and temperatures in certain barrel heating zones were slightly involved, as well as the maximum injection pressure and injection time. These conditions together may have increased the risk of failure for this cycle.
+The model's failure-risk assessment for this cycle was most strongly reduced by the part type being 'RG3 MOLD'G W/SHLD, RH', which pushed the outcome toward Pass. However, high back pressure—both maximum and average—along with elevated maximum injection pressure increased the assessed risk of failure. Additional contributing factors included higher temperatures in the fifth and sixth barrel heating zones. These pressure and temperature conditions collectively raised the model's failure-risk assessment, though the specific part type helped counteract this effect. The evidence does not confirm whether these measurements were outside normal operating ranges or directly caused a defect.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -431,18 +425,18 @@ This failure may be linked to the specific part being produced (PART_NAME_RG3 MO
 
 ## Top 10 SHAP Features for Index Row 5207
 
-| feature_name                    |   feature_importance |
-|:--------------------------------|---------------------:|
-| PART_NAME_RG3 MOLD'G W/SHLD, LH |            2.16658   |
-| Max_Back_Pressure               |            1.23719   |
-| Average_Screw_RPM               |            1.1087    |
-| Clamp_Close_Time                |            0.341588  |
-| Barrel_Temperature_5            |            0.338849  |
-| Plasticizing_Time               |            0.262676  |
-| Max_Injection_Pressure          |            0.220152  |
-| Barrel_Temperature_3            |            0.184678  |
-| Injection_Time                  |            0.163124  |
-| Barrel_Temperature_6            |            0.0971648 |
+| feature_name                    |   feature_attribution |   absolute_attribution | direction   |
+|:--------------------------------|----------------------:|-----------------------:|:------------|
+| PART_NAME_RG3 MOLD'G W/SHLD, RH |             -1.21719  |               1.21719  | toward Pass |
+| Average_Back_Pressure           |              1.19614  |               1.19614  | toward Fail |
+| Max_Back_Pressure               |              1.17841  |               1.17841  | toward Fail |
+| Max_Injection_Pressure          |              0.987248 |               0.987248 | toward Fail |
+| Mold_Temperature_4              |             -0.591077 |               0.591077 | toward Pass |
+| Hopper_Temperature              |              0.539487 |               0.539487 | toward Fail |
+| Average_Screw_RPM               |             -0.494038 |               0.494038 | toward Pass |
+| Barrel_Temperature_6            |              0.470355 |               0.470355 | toward Fail |
+| Barrel_Temperature_4            |             -0.461513 |               0.461513 | toward Pass |
+| Barrel_Temperature_1            |             -0.414562 |               0.414562 | toward Pass |
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `openai/gpt-5.4-mini`
@@ -451,7 +445,7 @@ This failure may be linked to the specific part being produced (PART_NAME_RG3 MO
 
 **Reason:** 가스 => Gas
 
-This failure may be linked first to the specific part being run, which can have different process sensitivity than other parts. The strongest process-related factors were the screw recovery and plasticizing conditions, especially the highest back pressure and the average screw speed, which may have affected how the material was prepared. Clamp close time, barrel temperatures in several zones, plasticizing time, injection pressure, and injection time also stood out as possible contributors, suggesting the cycle may have had unstable molding conditions.
+The model’s failure-risk assessment was pushed upward mainly by higher average back pressure, higher maximum back pressure, and higher maximum injection pressure, which were the strongest process signals favoring Fail. Hopper temperature and the sixth barrel heating zone also added some additional pressure toward a Fail assessment. Offsetting that, the part type for this cycle, along with mold temperature in zone 4, average screw speed, and the first and fourth barrel heating zones, all pulled the assessment back toward Pass. Overall, the evidence shows a mixed pattern with several pressure-related conditions increasing the model’s concern while other settings reduced it, but it does not establish the physical root cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `google/gemini-3.1-flash-lite`
@@ -460,7 +454,7 @@ This failure may be linked first to the specific part being run, which can have 
 
 **Reason:** 가스 => Gas
 
-The production of this specific part type was the most notable factor associated with this cycle's performance. The variation in back pressure and the average screw rotation speed during material preparation also appear to have contributed to the risk of failure. Additionally, fluctuations in clamp closing time and local temperature settings within the injection barrel may have influenced this outcome. Together, these factors suggest that settings related to material preparation and the initial injection stage were significant contributors to this production issue. Please review these process parameters to ensure they remain consistent with established operating standards.
+The manufacturing of the RG3 mold with shield significantly reduced the model's assessment of failure risk for this cycle. Conversely, higher readings for average and maximum back pressure, as well as the maximum injection pressure, contributed to an increased assessment of failure risk in the production cycle. The measured mold temperature in zone four also helped counteract the risk profile, pushing the assessment toward a pass. These combined technical factors shaped how the model evaluated the cycle, though this interpretation does not determine the physical cause of any defect.
 
 ----------------------------------------------------------------------------------------------------
 **Model:** `mistralai/devstral-2512`
@@ -469,7 +463,7 @@ The production of this specific part type was the most notable factor associated
 
 **Reason:** 가스 => Gas
 
-This failure may be linked to the specific part being produced (PART_NAME_RG3 MOLD'G W/SHLD, LH), as it was the most strongly associated factor. The highest resistance pressure during screw recovery and plasticizing, along with the average screw rotation speed during material preparation, also played a notable role. Additionally, variations in mold clamp closing time, barrel temperatures in zones 5 and 3, and plasticizing time may have contributed to the issue. Injection pressure and injection time were less influential but could still be related. These conditions together suggest a combination of part-specific and process factors that may have increased failure risk.
+The model's failure-risk assessment for this cycle was most strongly influenced by the part type 'RG3 MOLD'G W/SHLD, RH', which reduced the risk of failure. However, high average and maximum back pressure during material preparation, along with elevated maximum injection pressure, increased the failure-risk assessment. Additionally, higher hopper temperature and barrel temperature in zone 6 contributed to the increased risk. On the other hand, mold temperature in zone 4, along with lower barrel temperatures in zones 1 and 4, and average screw RPM helped counteract the failure risk.
 
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------

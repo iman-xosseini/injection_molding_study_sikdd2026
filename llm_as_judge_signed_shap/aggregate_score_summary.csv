@@ -1,0 +1,6 @@
+,evidence_faithfulness,evidence_faithfulness,evidence_faithfulness,evidence_faithfulness,attribution_caution,attribution_caution,attribution_caution,attribution_caution,manufacturing_process_relevance,manufacturing_process_relevance,manufacturing_process_relevance,manufacturing_process_relevance,overall_score,overall_score,overall_score,overall_score
+,mean,std,min,max,mean,std,min,max,mean,std,min,max,mean,std,min,max
+model_name,,,,,,,,,,,,,,,,
+google/gemini-3.1-flash-lite,3.2,0.919,2,4,4.1,0.994,2,5,3.9,0.316,3,4,3.733,0.625,2.667,4.333
+mistralai/devstral-2512,3.6,0.843,2,5,3.4,1.075,2,5,4.3,0.675,3,5,3.767,0.754,2.333,4.667
+openai/gpt-5.4-mini,4.1,0.738,3,5,3.3,0.823,2,5,4.5,0.527,4,5,3.967,0.618,3.333,5.0

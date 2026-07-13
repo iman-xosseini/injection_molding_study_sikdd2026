@@ -1,0 +1,210 @@
+{
+  "index_row": 2177,
+  "reason": "미성형 => Unshaped",
+  "evaluations": [
+    {
+      "candidate_id": "Candidate A",
+      "scores": {
+        "evidence_faithfulness": 4,
+        "attribution_caution": 5,
+        "manufacturing_process_relevance": 4
+      },
+      "mentioned_evidence_features": [
+        "PART_NAME_RG3 MOLD'G W/SHLD, RH",
+        "Barrel_Temperature_5",
+        "Max_Screw_RPM",
+        "Max_Injection_Pressure",
+        "Hopper_Temperature",
+        "Average_Back_Pressure",
+        "Barrel_Temperature_1",
+        "Clamp_Close_Time"
+      ],
+      "direction_errors": [],
+      "unsupported_value_or_range_claims": [],
+      "causal_or_intervention_overclaims": [],
+      "strengths": [
+        "Correctly emphasizes the top Fail-leaning and Pass-leaning features",
+        "Uses appropriate caveat language about model assessment rather than physical causation",
+        "Translates encoded variables into understandable process terms"
+      ],
+      "weaknesses": [
+        "Slightly less complete than the table because it omits Mold_Temperature_4 and Barrel_Temperature_3",
+        "Uses comparative phrasing like 'primarily increased' that is acceptable but somewhat interpretive"
+      ],
+      "short_assessment": "Mostly faithful and careful, with good process interpretation and no major direction mistakes.",
+      "model_name": "google/gemini-3.1-flash-lite",
+      "overall_score": 4.333333333333333
+    },
+    {
+      "candidate_id": "Candidate B",
+      "scores": {
+        "evidence_faithfulness": 5,
+        "attribution_caution": 4,
+        "manufacturing_process_relevance": 5
+      },
+      "mentioned_evidence_features": [
+        "PART_NAME_RG3 MOLD'G W/SHLD, RH",
+        "Barrel_Temperature_5",
+        "Max_Screw_RPM",
+        "Max_Injection_Pressure",
+        "Hopper_Temperature",
+        "Barrel_Temperature_3",
+        "Average_Back_Pressure",
+        "Barrel_Temperature_1",
+        "Clamp_Close_Time",
+        "Mold_Temperature_4"
+      ],
+      "direction_errors": [],
+      "unsupported_value_or_range_claims": [
+        "higher temperature in barrel zone 5",
+        "a higher maximum screw speed",
+        "higher temperature in barrel zone 3"
+      ],
+      "causal_or_intervention_overclaims": [],
+      "strengths": [
+        "Covers all top-ten features and correctly separates Fail-leaning from Pass-leaning evidence",
+        "Provides a clear injection-molding interpretation of the variables",
+        "Includes a caution that the evidence does not prove physical root cause or an out-of-range setting"
+      ],
+      "weaknesses": [
+        "Uses unsupported 'higher' phrasing for several variables, which implies raw-value direction not given by the attribution table"
+      ],
+      "short_assessment": "Best overall match to the table, though it slightly overstates raw-value direction for a few features.",
+      "model_name": "openai/gpt-5.4-mini",
+      "overall_score": 4.666666666666667
+    },
+    {
+      "candidate_id": "Candidate C",
+      "scores": {
+        "evidence_faithfulness": 3,
+        "attribution_caution": 4,
+        "manufacturing_process_relevance": 4
+      },
+      "mentioned_evidence_features": [
+        "PART_NAME_RG3 MOLD'G W/SHLD, RH",
+        "Barrel_Temperature_5",
+        "Max_Screw_RPM",
+        "Average_Back_Pressure",
+        "Barrel_Temperature_1",
+        "Max_Injection_Pressure",
+        "Hopper_Temperature",
+        "Clamp_Close_Time",
+        "Mold_Temperature_4"
+      ],
+      "direction_errors": [
+        "Describes Max_Screw_RPM as 'higher risk' without the unsupported raw-value claim that the RPM was high",
+        "Describes Barrel_Temperature_5 as 'high temperature' rather than simply a positive attribution toward Fail"
+      ],
+      "unsupported_value_or_range_claims": [
+        "high temperature in the fifth barrel heating zone",
+        "higher risk",
+        "higher risk"
+      ],
+      "causal_or_intervention_overclaims": [],
+      "strengths": [
+        "Mentions the most influential features and gives a sensible process-oriented summary",
+        "Includes an explicit caveat that the explanation does not confirm a physical defect cause"
+      ],
+      "weaknesses": [
+        "Omits Barrel_Temperature_3 and does not clearly cover all top-ten evidence",
+        "Uses several value-direction phrases that are not justified by attribution sign alone",
+        "Treats some positive attributions as if the raw measurements were high"
+      ],
+      "short_assessment": "Reasonably relevant and cautious, but less faithful because it adds unsupported high/low style interpretations.",
+      "model_name": "mistralai/devstral-2512",
+      "overall_score": 3.6666666666666665
+    }
+  ],
+  "ranking": [
+    {
+      "rank": 1,
+      "candidate_id": "Candidate B",
+      "reason": "Most complete and faithful overall, with correct fail/pass separation and strong manufacturing context.",
+      "model_name": "openai/gpt-5.4-mini"
+    },
+    {
+      "rank": 2,
+      "candidate_id": "Candidate A",
+      "reason": "Very careful and mostly faithful, but it omits two listed features.",
+      "model_name": "google/gemini-3.1-flash-lite"
+    },
+    {
+      "rank": 3,
+      "candidate_id": "Candidate C",
+      "reason": "Good process language, but it introduces more unsupported high-risk/high-temperature style wording than A or B.",
+      "model_name": "mistralai/devstral-2512"
+    }
+  ],
+  "overall_summary": "All three explanations are broadly aligned with the table, but Candidate B is the strongest because it covers all top-ten features and preserves attribution direction best, despite a few unsupported 'higher' phrasing choices. Candidate A is cautious and accurate but slightly incomplete. Candidate C is understandable and process-relevant, but it relies more on unsupported raw-value implications.",
+  "judge_model": "~openai/gpt-mini-latest",
+  "candidate_to_model": {
+    "Candidate A": "google/gemini-3.1-flash-lite",
+    "Candidate B": "openai/gpt-5.4-mini",
+    "Candidate C": "mistralai/devstral-2512"
+  },
+  "evidence": [
+    {
+      "feature_name": "PART_NAME_RG3 MOLD'G W/SHLD, RH",
+      "feature_attribution": 2.24777,
+      "absolute_attribution": 2.24777,
+      "direction": "toward Fail"
+    },
+    {
+      "feature_name": "Barrel_Temperature_5",
+      "feature_attribution": 1.35305,
+      "absolute_attribution": 1.35305,
+      "direction": "toward Fail"
+    },
+    {
+      "feature_name": "Max_Screw_RPM",
+      "feature_attribution": 0.511997,
+      "absolute_attribution": 0.511997,
+      "direction": "toward Fail"
+    },
+    {
+      "feature_name": "Average_Back_Pressure",
+      "feature_attribution": -0.499829,
+      "absolute_attribution": 0.499829,
+      "direction": "toward Pass"
+    },
+    {
+      "feature_name": "Barrel_Temperature_1",
+      "feature_attribution": -0.396617,
+      "absolute_attribution": 0.396617,
+      "direction": "toward Pass"
+    },
+    {
+      "feature_name": "Clamp_Close_Time",
+      "feature_attribution": -0.366042,
+      "absolute_attribution": 0.366042,
+      "direction": "toward Pass"
+    },
+    {
+      "feature_name": "Max_Injection_Pressure",
+      "feature_attribution": 0.296481,
+      "absolute_attribution": 0.296481,
+      "direction": "toward Fail"
+    },
+    {
+      "feature_name": "Hopper_Temperature",
+      "feature_attribution": 0.282539,
+      "absolute_attribution": 0.282539,
+      "direction": "toward Fail"
+    },
+    {
+      "feature_name": "Mold_Temperature_4",
+      "feature_attribution": -0.270166,
+      "absolute_attribution": 0.270166,
+      "direction": "toward Pass"
+    },
+    {
+      "feature_name": "Barrel_Temperature_3",
+      "feature_attribution": 0.25345,
+      "absolute_attribution": 0.25345,
+      "direction": "toward Fail"
+    }
+  ],
+  "prompt": "You are an impartial evaluator in a manufacturing explainability study.\n\nEvaluate three natural-language explanations of the LOCAL ATTRIBUTION EVIDENCE\nfor one injection-molding production cycle. You are evaluating the explanations,\nnot the quality of the predictive model and not the true physical root cause.\n\n# Case metadata\n\nIndex row: 2177\nRecorded failure reason: 미성형 => Unshaped\n\nThe recorded reason is context only. It does not prove that any listed variable\nphysically caused that defect.\n\n# Signed local attribution evidence\n\n| feature_name                    |   feature_attribution |   absolute_attribution | direction   |\n|:--------------------------------|----------------------:|-----------------------:|:------------|\n| PART_NAME_RG3 MOLD'G W/SHLD, RH |              2.247770 |               2.247770 | toward Fail |\n| Barrel_Temperature_5            |              1.353050 |               1.353050 | toward Fail |\n| Max_Screw_RPM                   |              0.511997 |               0.511997 | toward Fail |\n| Average_Back_Pressure           |             -0.499829 |               0.499829 | toward Pass |\n| Barrel_Temperature_1            |             -0.396617 |               0.396617 | toward Pass |\n| Clamp_Close_Time                |             -0.366042 |               0.366042 | toward Pass |\n| Max_Injection_Pressure          |              0.296481 |               0.296481 | toward Fail |\n| Hopper_Temperature              |              0.282539 |               0.282539 | toward Fail |\n| Mold_Temperature_4              |             -0.270166 |               0.270166 | toward Pass |\n| Barrel_Temperature_3            |              0.253450 |               0.253450 | toward Fail |\n\nInterpret the table exactly as follows:\n\n1. A POSITIVE `feature_attribution` pushed the predictive model output toward\n   Fail for this row.\n2. A NEGATIVE `feature_attribution` pushed the predictive model output toward\n   Pass for this row.\n3. `absolute_attribution` gives influence magnitude and is used for ranking.\n4. The attribution value may be on the model's raw output scale. It is not\n   necessarily a probability change or percentage.\n5. Attribution direction does NOT show that the observed raw feature value was\n   high, low, elevated, reduced, abnormal, stable, fast, slow, long, short, or\n   outside an acceptable range.\n6. The table does not contain observed feature values, valid operating ranges,\n   the model baseline, all omitted feature contributions, or intervention\n   evidence.\n7. Therefore, the top-ten table alone does not justify a claim about the final\n   predicted class, final probability, physical causation, or which setting\n   should be changed.\n\n# Candidate explanations\n\n### Candidate A\n\nThe model's assessment of failure risk for this production cycle was primarily increased by the specific part type being manufactured, the temperature in the fifth zone of the injection barrel, and the maximum screw rotation speed. Higher injection pressure and elevated hopper temperatures also contributed to this increased risk assessment. Conversely, the average back pressure during material preparation, the temperature in the first heating zone of the barrel, and the clamp closing time acted to reduce the model's failure-risk assessment. These factors reflect the model’s internal evaluation and do not confirm the physical root cause of any defect.\n\n### Candidate B\n\nThe model’s failure-risk assessment was pushed most strongly toward Fail by the product type for this cycle, along with higher temperature in barrel zone 5 and a higher maximum screw speed during plasticizing. Additional Fail-leaning influence came from the maximum injection pressure, hopper temperature, and barrel zone 3 temperature. Offsetting that, the average back pressure, barrel zone 1 temperature, clamp close time, and a monitored mold temperature all pushed the assessment toward Pass and reduced the overall failure risk. These factors describe how the model weighed the cycle, but they do not prove any physical root cause or show that any setting was outside an acceptable process range.\n\n### Candidate C\n\nThe model's failure-risk assessment for this cycle was most strongly influenced by the part type 'RG3 MOLD'G W/SHLD, RH', which increased the risk, followed by the high temperature in the fifth barrel heating zone. The maximum screw RPM also contributed to higher risk, while the average back pressure and first barrel temperature helped reduce it. Other factors like injection pressure and hopper temperature slightly raised the risk, but clamp close time and mold temperature in zone 4 counteracted some of that risk. The combination of these conditions shaped the model's overall assessment without confirming a physical defect cause.\n\n# Scoring criteria\n\nAssign an INTEGER score from 1 to 5 for each criterion.\n\n## 1. evidence_faithfulness\n\nEvaluate whether the explanation:\n- focuses on features that actually appear in the table;\n- correctly distinguishes evidence toward Fail from evidence toward Pass;\n- gives greater emphasis to larger absolute attributions;\n- does not reverse attribution direction;\n- does not infer the final class or final probability from the top-ten table;\n- does not invent values, factors, or mechanisms.\n\nScore anchors:\n- 5: highly faithful; major features and directions are represented correctly,\n     with no material unsupported statement.\n- 4: mostly faithful; only a minor omission, imprecision, or vague statement.\n- 3: mixed; useful overall but contains one meaningful unsupported or\n     directionally ambiguous claim.\n- 2: substantial conflicts, direction errors, or invented evidence.\n- 1: mostly unrelated to, or contradicted by, the supplied evidence.\n\n## 2. attribution_caution\n\nEvaluate whether the explanation:\n- clearly treats the evidence as influencing the model's assessment;\n- avoids presenting attribution as proof of the physical root cause;\n- avoids unsupported raw-value claims such as high, low, elevated, reduced,\n  faster, slower, longer, shorter, stable, extreme, or out of range;\n- avoids unsupported process-change recommendations;\n- avoids implying that a positive attribution means the raw measurement was\n  numerically high, or that a negative attribution means it was low.\n\nScore anchors:\n- 5: consistently cautious and precise.\n- 4: cautious overall, with one mild ambiguous phrase.\n- 3: multiple unsupported value/direction phrases, but the explanation includes\n     a meaningful caveat.\n- 2: frequent overstatement, physical-mechanism claims, or unsupported advice.\n- 1: presents a definitive cause, abnormal value, or intervention as established.\n\n## 3. manufacturing_process_relevance\n\nEvaluate whether the explanation:\n- uses understandable injection-molding terminology;\n- translates encoded variable names into meaningful process language;\n- organizes the explanation around the strongest process signals;\n- remains concise and useful without inventing technical mechanisms.\n\nScore anchors:\n- 5: clear, concise, and strongly relevant to injection molding.\n- 4: relevant and understandable with minor wording limitations.\n- 3: generally relevant but generic, incomplete, or somewhat unclear.\n- 2: weak process interpretation or substantial distracting content.\n- 1: not meaningfully relevant to the manufacturing case.\n\n# Required JSON output\n\nReturn valid JSON only. Do not use Markdown fences.\n\nUse exactly this structure:\n\n{\n  \"index_row\": 2177,\n  \"evaluations\": [\n    {\n      \"candidate_id\": \"Candidate A\",\n      \"scores\": {\n        \"evidence_faithfulness\": 1,\n        \"attribution_caution\": 1,\n        \"manufacturing_process_relevance\": 1\n      },\n      \"mentioned_evidence_features\": [\"feature name\"],\n      \"direction_errors\": [\"specific error\"],\n      \"unsupported_value_or_range_claims\": [\"specific claim\"],\n      \"causal_or_intervention_overclaims\": [\"specific claim\"],\n      \"strengths\": [\"specific strength\"],\n      \"weaknesses\": [\"specific weakness\"],\n      \"short_assessment\": \"brief assessment\"\n    }\n  ],\n  \"ranking\": [\n    {\n      \"rank\": 1,\n      \"candidate_id\": \"Candidate A\",\n      \"reason\": \"brief reason\"\n    }\n  ],\n  \"overall_summary\": \"brief comparison\"\n}\n\nRequirements:\n- Return exactly one evaluation for Candidate A, Candidate B, and Candidate C.\n- Use integer criterion scores only.\n- Rank all three candidates exactly once.\n- Do not infer candidate identities.",
+  "raw_judge_response": "{\n  \"index_row\": 2177,\n  \"evaluations\": [\n    {\n      \"candidate_id\": \"Candidate A\",\n      \"scores\": {\n        \"evidence_faithfulness\": 4,\n        \"attribution_caution\": 5,\n        \"manufacturing_process_relevance\": 4\n      },\n      \"mentioned_evidence_features\": [\n        \"PART_NAME_RG3 MOLD'G W/SHLD, RH\",\n        \"Barrel_Temperature_5\",\n        \"Max_Screw_RPM\",\n        \"Max_Injection_Pressure\",\n        \"Hopper_Temperature\",\n        \"Average_Back_Pressure\",\n        \"Barrel_Temperature_1\",\n        \"Clamp_Close_Time\"\n      ],\n      \"direction_errors\": [],\n      \"unsupported_value_or_range_claims\": [],\n      \"causal_or_intervention_overclaims\": [],\n      \"strengths\": [\n        \"Correctly emphasizes the top Fail-leaning and Pass-leaning features\",\n        \"Uses appropriate caveat language about model assessment rather than physical causation\",\n        \"Translates encoded variables into understandable process terms\"\n      ],\n      \"weaknesses\": [\n        \"Slightly less complete than the table because it omits Mold_Temperature_4 and Barrel_Temperature_3\",\n        \"Uses comparative phrasing like 'primarily increased' that is acceptable but somewhat interpretive\"\n      ],\n      \"short_assessment\": \"Mostly faithful and careful, with good process interpretation and no major direction mistakes.\"\n    },\n    {\n      \"candidate_id\": \"Candidate B\",\n      \"scores\": {\n        \"evidence_faithfulness\": 5,\n        \"attribution_caution\": 4,\n        \"manufacturing_process_relevance\": 5\n      },\n      \"mentioned_evidence_features\": [\n        \"PART_NAME_RG3 MOLD'G W/SHLD, RH\",\n        \"Barrel_Temperature_5\",\n        \"Max_Screw_RPM\",\n        \"Max_Injection_Pressure\",\n        \"Hopper_Temperature\",\n        \"Barrel_Temperature_3\",\n        \"Average_Back_Pressure\",\n        \"Barrel_Temperature_1\",\n        \"Clamp_Close_Time\",\n        \"Mold_Temperature_4\"\n      ],\n      \"direction_errors\": [],\n      \"unsupported_value_or_range_claims\": [\n        \"higher temperature in barrel zone 5\",\n        \"a higher maximum screw speed\",\n        \"higher temperature in barrel zone 3\"\n      ],\n      \"causal_or_intervention_overclaims\": [],\n      \"strengths\": [\n        \"Covers all top-ten features and correctly separates Fail-leaning from Pass-leaning evidence\",\n        \"Provides a clear injection-molding interpretation of the variables\",\n        \"Includes a caution that the evidence does not prove physical root cause or an out-of-range setting\"\n      ],\n      \"weaknesses\": [\n        \"Uses unsupported 'higher' phrasing for several variables, which implies raw-value direction not given by the attribution table\"\n      ],\n      \"short_assessment\": \"Best overall match to the table, though it slightly overstates raw-value direction for a few features.\"\n    },\n    {\n      \"candidate_id\": \"Candidate C\",\n      \"scores\": {\n        \"evidence_faithfulness\": 3,\n        \"attribution_caution\": 4,\n        \"manufacturing_process_relevance\": 4\n      },\n      \"mentioned_evidence_features\": [\n        \"PART_NAME_RG3 MOLD'G W/SHLD, RH\",\n        \"Barrel_Temperature_5\",\n        \"Max_Screw_RPM\",\n        \"Average_Back_Pressure\",\n        \"Barrel_Temperature_1\",\n        \"Max_Injection_Pressure\",\n        \"Hopper_Temperature\",\n        \"Clamp_Close_Time\",\n        \"Mold_Temperature_4\"\n      ],\n      \"direction_errors\": [\n        \"Describes Max_Screw_RPM as 'higher risk' without the unsupported raw-value claim that the RPM was high\",\n        \"Describes Barrel_Temperature_5 as 'high temperature' rather than simply a positive attribution toward Fail\"\n      ],\n      \"unsupported_value_or_range_claims\": [\n        \"high temperature in the fifth barrel heating zone\",\n        \"higher risk\",\n        \"higher risk\" \n      ],\n      \"causal_or_intervention_overclaims\": [],\n      \"strengths\": [\n        \"Mentions the most influential features and gives a sensible process-oriented summary\",\n        \"Includes an explicit caveat that the explanation does not confirm a physical defect cause\"\n      ],\n      \"weaknesses\": [\n        \"Omits Barrel_Temperature_3 and does not clearly cover all top-ten evidence\",\n        \"Uses several value-direction phrases that are not justified by attribution sign alone\",\n        \"Treats some positive attributions as if the raw measurements were high\"\n      ],\n      \"short_assessment\": \"Reasonably relevant and cautious, but less faithful because it adds unsupported high/low style interpretations.\"\n    }\n  ],\n  \"ranking\": [\n    {\n      \"rank\": 1,\n      \"candidate_id\": \"Candidate B\",\n      \"reason\": \"Most complete and faithful overall, with correct fail/pass separation and strong manufacturing context.\"\n    },\n    {\n      \"rank\": 2,\n      \"candidate_id\": \"Candidate A\",\n      \"reason\": \"Very careful and mostly faithful, but it omits two listed features.\"\n    },\n    {\n      \"rank\": 3,\n      \"candidate_id\": \"Candidate C\",\n      \"reason\": \"Good process language, but it introduces more unsupported high-risk/high-temperature style wording than A or B.\"\n    }\n  ],\n  \"overall_summary\": \"All three explanations are broadly aligned with the table, but Candidate B is the strongest because it covers all top-ten features and preserves attribution direction best, despite a few unsupported 'higher' phrasing choices. Candidate A is cautious and accurate but slightly incomplete. Candidate C is understandable and process-relevant, but it relies more on unsupported raw-value implications.\"\n}",
+  "generated_at_utc": "2026-07-13T13:07:19.481381+00:00"
+}
