@@ -26,6 +26,7 @@ llm_explanation/explanation_results.md
 llm_as_judge.zip
 MyNotes.md
 
+
 # Ignore all .html files inside subcausal_visualization but do NOT ignore the directlingam folder
 subcausal_visualization/**/*.html
 subcausal_visualization/*.html
@@ -34,3 +35,6 @@ subcausal_visualization/*.html
 
 # Ignore util folder and all files it contains
 util/
+
+# Ignore specific files
+notebooks/kamp_test_predictions_for_xai.csv
