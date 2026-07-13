@@ -333,7 +333,7 @@ A formal citation will be added after publication.
 ```bibtex
 @article{hosseini_llm_injection_molding,
   title   = {Evaluating the Faithfulness of LLM-Generated Explanations for Injection-Molding Failure Prediction Using Model-Attribution Evidence},
-  author  = {Hosseini, Seyed Iman and Mladeni{\\v{c}}, Dunja},
+  author  = {Hosseini, Seyed Iman and Mladenic, Dunja},
   year    = {2026},
   note    = {Manuscript in preparation}
 }
