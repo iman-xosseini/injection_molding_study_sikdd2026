@@ -1,39 +1,39 @@
 {
   "CatBoost": {
-    "iterations": 400,
-    "depth": 9,
-    "learning_rate": 0.1361103693677455,
-    "l2_leaf_reg": 1.373223038795597,
-    "random_strength": 0.004062197690317377,
-    "bagging_temperature": 1.6770531643277833,
-    "border_count": 64,
-    "scale_pos_weight": 14.948495241458842
+    "iterations": 600,
+    "depth": 5,
+    "learning_rate": 0.007627350864337546,
+    "l2_leaf_reg": 1.6244386546814742,
+    "random_strength": 1.123979073096971,
+    "bagging_temperature": 0.661597408959324,
+    "border_count": 128,
+    "scale_pos_weight": 21.542822063502566
   },
   "LightGBM": {
-    "n_estimators": 800,
-    "learning_rate": 0.14508417132993925,
+    "n_estimators": 700,
+    "learning_rate": 0.007049341128319186,
     "num_leaves": 27,
-    "max_depth": 10,
-    "min_child_samples": 178,
-    "subsample": 0.6083454497221304,
-    "colsample_bytree": 0.9678483475158824,
-    "reg_alpha": 0.021911250783153584,
-    "reg_lambda": 0.0033759394305726306,
-    "min_split_gain": 0.9910540676946129,
-    "max_bin": 63,
-    "scale_pos_weight": 89.92417678475135
+    "max_depth": 3,
+    "min_child_samples": 66,
+    "subsample": 0.6413250544975189,
+    "colsample_bytree": 0.5278264385802731,
+    "reg_alpha": 6.86150436864757e-07,
+    "reg_lambda": 3.204577226342034e-06,
+    "min_split_gain": 0.5423157935404381,
+    "max_bin": 127,
+    "scale_pos_weight": 107.97638705513306
   },
   "XGBoost": {
-    "n_estimators": 1500,
-    "max_depth": 6,
-    "learning_rate": 0.11049187590800524,
-    "min_child_weight": 5.129566224493147,
-    "subsample": 0.6077189760519633,
-    "colsample_bytree": 0.7764001285361238,
-    "gamma": 0.3497125644048441,
-    "reg_alpha": 1.0266453770343363e-07,
-    "reg_lambda": 0.0015066152463993389,
+    "n_estimators": 1000,
+    "max_depth": 9,
+    "learning_rate": 0.06984055779921519,
+    "min_child_weight": 19.862485637923665,
+    "subsample": 0.6098239120489868,
+    "colsample_bytree": 0.8392139373078994,
+    "gamma": 1.45878981166922e-05,
+    "reg_alpha": 2.4225065446734543e-07,
+    "reg_lambda": 0.05693573157069866,
     "max_delta_step": 10,
-    "scale_pos_weight": 41.73426360925991
+    "scale_pos_weight": 17.50234707966415
   }
 }

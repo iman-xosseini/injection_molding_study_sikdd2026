@@ -21,6 +21,7 @@ llm_as_judge_feature_importance
 notebooks/02_ml_xai-working.ipynb
 notebooks/02_ml_xai.ipynb
 notebooks/03_llm_as_a_judge.ipynb
+notebooks/02_ml_xai_imbalance_aware_all_failure_explanations.ipynb
 llm_as_judge
 llm_as_judge_9_evaluation_metrics
 llm_as_judge_lag_1
@@ -28,6 +29,7 @@ llm_explanation/explanation_results_causal_lag_1.md
 llm_explanation/explanation_results_copy.md
 llm_explanation/explanation_results_sikdd_previous_version.md
 llm_explanation/explanation_results.md
+llm_explanation/explanation_results_sikdd_timeaware_splitting.md
 llm_as_judge.zip
 MyNotes.md
 
